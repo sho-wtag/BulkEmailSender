@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+        <div class="filter-area">
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-lg-10">
+                    <div class="input-group width250" id="start_date" style="float: left; margin-right: 8px;">
+                        <span class="input-group-addon">Email</span>
+                        <input type="text" id="email" class="form-control" type="text" placeholder="Contact email"  ng-model="search.email" />
+                    </div>
+                    
+                    <div class="input-group width250" id="start_date" style="float: left; margin-right: 8px;">
+                        <span class="input-group-addon">F. Name</span>
+                        <input type="text" id="first_name" class="form-control" type="text" placeholder="First name"  ng-model="search.first_name" />
+                    </div>
+                    
+                    <div class="input-group width250" id="start_date" style="float: left; margin-right: 8px;">
+                        <span class="input-group-addon">L. Name</span>
+                        <input type="text" id="last_name" class="form-control" type="text" placeholder="Last name"  ng-model="search.last_name" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2 col-lg-2">
+                    <div class="btn-group" style="float: right;">
+                        <button ng-click="doFilter(1, itemPerPage)" class="btn btn-default btn-sm" title="Filter now"><i class="icon fa fa-search"></i> Filter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12" ng-init="getDataList(1, itemPerPage)">
+                <table id="simple-table" class="table  table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">SL</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Email</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="obj in data.items track by $index">
+                            <td class="text-center">{{$index+1}}</td>
+                            <td>{{obj.first_name}}</td>
+                            <td>{{obj.last_name}}</td>
+                            <td>{{obj.email}}</td>
+                            <td class="text-center">
+                                <button ng-click="showEditForm(obj)" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.segment_edit_view)" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</button>
+                            </td>
+                        </tr>
+                        <tr ng-if="data.items.length===0">
+                            <td colspan="5" class="text-center"><h3>No logs found!!!</h3></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div sarker-pagination item-count="data.itemCount" item-per-page="itemPerPage" selected-page="currentPage" get-items="getDataList(pageNumber, itemPerPage)"></div>
+            </div>
+        </div>
+    </div>
+</div>

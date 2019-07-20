@@ -1,0 +1,34 @@
+<div class="row" ng-init="getDataList()">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Emp. Code</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email/Login Id</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="obj in list track by $index">
+                    <td>{{obj.user_code}}</td>
+                    <td>{{obj.first_name}}</td>
+                    <td>{{obj.last_name}}</td>
+                    <td>{{obj.phone}}</td>
+                    <td>{{obj.email}}</td>
+                    <td>{{obj.role_name}}</td>
+                    
+                    <td>
+                        <button class="btn btn-sm btn-warning"  ng-click="showEditForm(obj)" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.user_edit_view)" > <i class="ace-icon fa fa-edit"></i>Edit</button>
+                        <button class="btn btn-sm btn-danger"  ng-click="activeInactive(obj, false)" ng-show="obj.active === true" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.user_edit_view)"> <i class="ace-icon fa fa-trash"></i> Deactivate</button>
+                        <button class="btn btn-sm btn-success" ng-click="activeInactive(obj, true)" ng-show="obj.active === false" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.user_edit_view)"> <i class="ace-icon fa fa-check-circle"></i> Activate</button>
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</div>

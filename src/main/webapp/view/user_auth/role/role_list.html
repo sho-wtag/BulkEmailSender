@@ -1,0 +1,27 @@
+<div class="row" ng-init="getDataList()">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="obj in list track by $index">
+                    <td>{{obj.role_name}}</td>
+                    <td>{{obj.role_code}}</td>
+                    
+                    <td>
+                        <button class="btn btn-sm btn-warning" ng-click="showEditForm(obj)" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.role_update)"> <i class="ace-icon fa fa-edit"></i> Edit</button>
+                        <button class="btn btn-sm btn-danger" ng-click="activeInactive(obj, false)" ng-show="obj.active === true" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.role_add_view)" > <i class="ace-icon fa fa-trash"></i> Deactivate</button>
+                        <button class="btn btn-sm btn-success" ng-click="activeInactive(obj, true)" ng-show="obj.active === false" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.role_add_view)" > <i class="ace-icon fa fa-check-circle"></i> Activate</button>
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</div>

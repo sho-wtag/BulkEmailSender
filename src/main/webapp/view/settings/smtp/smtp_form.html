@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+        <div class="widget-box">
+            <div class="widget-header">
+                <h4 class="widget-title">{{page_name}}</h4>
+
+                <span class="widget-toolbar">
+
+                </span>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main">
+
+                    <form ng-submit="saveModule()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Smtp Host Name</label>
+                                        <input class="form-control" type="text" id="smtp_hostname" ng-model="module.smtp_hostname" placeholder="Smtp Host Name" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Smtp Port</label>
+                                        <input class="form-control" type="text" id="smtp_port" ng-model="module.smtp_port" placeholder="Smtp Port" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Smtp Encryption Type</label>
+                                        <input class="form-control" type="text" id="smtp_encryption" ng-model="module.smtp_encryption" placeholder="Smtp Encryption Type" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Smtp User</label>
+                                        <input class="form-control" type="text" id="smtp_user" ng-model="module.smtp_user" placeholder="Smtp User" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Smtp Password<span class="required">*</span></label>
+                                        <input class="form-control" type="text" id="smtp_pass" ng-model="module.smtp_pass" placeholder="Smtp Password" required />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Smtp Max Connections</label>
+                                        <input class="form-control" type="text" id="smtp_max_connections" ng-model="module.smtp_max_connections" placeholder="Smtp Max Connections" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Smtp Max Messages</label>
+                                        <input class="form-control" type="text" id="smtp_max_messages" ng-model="module.smtp_max_messages" placeholder="Smtp Max Messages" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Smtp Log</label>
+                                        <input class="form-control" type="text" id="smtp_log" ng-model="module.smtp_log" placeholder="Smtp Log" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Smtp Service URL</label>
+                                        <input class="form-control" type="text" id="service_url" ng-model="module.service_url" placeholder="Smtp Service URL" required />
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Smtp Admin Email]</label>
+                                        <input class="form-control" type="text" id="admin_email" ng-model="module.admin_email" placeholder="Smtp Admin Email" required />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-actions pull-right">
+                                    <button type="button" ui-sref="{{JCOMPONENT.smtp_list_view}}" ng-show="true" class="btn btn-sm btn-danger">
+                                        <i class="ace-icon fa fa-close"></i> Cancel
+                                    </button>
+
+                                    <button type="reset" ng-show="current_state===JCOMPONENT.smtp_add_view" class="btn btn-sm btn-warning">
+                                        <i class="ace-icon fa fa-recycle"></i> Reset
+                                    </button>
+
+                                    <button type="submit" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.smtp_add_view) || hasPermission(JMODULE_NAME, JCOMPONENT.smtp_edit_view)" class="btn btn-sm btn-primary">
+                                        <i class="ace-icon fa fa-check-circle"></i>
+                                        <span ng-if="current_state===JCOMPONENT.smtp_add_view" >Save</span>
+                                        <span ng-if="current_state===JCOMPONENT.smtp_edit_view" >Update</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+        <div class="widget-box">
+            <div class="widget-header">
+                <h4 class="widget-title">{{page_name}}</h4>
+
+                <span class="widget-toolbar">
+                    
+                </span>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main">
+
+                    <form ng-submit="saveModule()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <label>First Name</label>
+                                        <input class="form-control" type="text" id="first_name" ng-model="module.first_name" placeholder="First Name" required />
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label>Last Name</label>
+                                        <input class="form-control" type="text" id="last_name" ng-model="module.last_name" placeholder="Last Name" required />
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label>Email</label>
+                                        <input class="form-control" type="text" id="email" ng-model="module.email" placeholder="Email" required />
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="row">
+
+                                    <div class="col-md-12" ng-show="current_state===JCOMPONENT.contact_add_view">
+                                        <label>CID</label>
+                                        <input class="form-control" type="text" id="cid" ng-model="module.cid" placeholder="CID" required />
+                                    </div>
+                                    <div class="col-md-12" ng-show="current_state===JCOMPONENT.contact_edit_view">
+                                        <label>CID</label>
+                                        <input class="form-control" type="text" id="cid" ng-model="module.cid" placeholder="CID" readonly="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-actions pull-right">
+                                    <button type="button" ui-sref="{{JCOMPONENT.contact_list_view}}" ng-show="true" class="btn btn-sm btn-danger">
+                                        <i class="ace-icon fa fa-close"></i> Cancel
+                                    </button>
+                                    
+                                    <button type="reset" ng-show="current_state===JCOMPONENT.contact_add_view" class="btn btn-sm btn-warning">
+                                        <i class="ace-icon fa fa-recycle"></i> Reset
+                                    </button>
+
+                                    <button type="submit" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.contact_add_view) || hasPermission(JMODULE_NAME, JCOMPONENT.contact_edit_view)" class="btn btn-sm btn-primary">
+                                        <i class="ace-icon fa fa-check-circle"></i> 
+                                        <span ng-if="current_state===JCOMPONENT.contact_add_view" >Save</span> 
+                                        <span ng-if="current_state===JCOMPONENT.contact_edit_view" >Update</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

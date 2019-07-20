@@ -1,0 +1,29 @@
+<div class="row" ng-init="getDataList()">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Smtp Hostname</th>
+                <th>Smtp Encryption Type</th>
+                <th>Smtp User</th>
+                <th>Smtp Max Connections</th>
+                <th>Smtp Admin Email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="obj in list track by $index">
+                <td>{{obj.smtp_hostname}}</td>
+                <td>{{obj.smtp_encryption}}</td>
+                <td>{{obj.smtp_user}}</td>
+                <td>{{obj.smtp_max_connections}}</td>
+                <td>{{obj.admin_email}}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning" ng-click="showEditForm(obj)" ng-if="hasPermission(JMODULE_NAME, JCOMPONENT.smtp_edit_view)"> <i class="ace-icon fa fa-edit"></i> Edit</button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

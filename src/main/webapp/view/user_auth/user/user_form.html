@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+        <div class="widget-box">
+            <div class="widget-header">
+                <h4 class="widget-title">{{page_name}}</h4>
+
+                <span class="widget-toolbar">
+
+                </span>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main">
+                    <form ng-submit="saveModule()">
+                        <div class="row  ">
+                            <div class="col-md-6">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <label>Employee Code</label>
+                                        <input class="form-control" type="text" id="role_code" ng-model="module.user_code" placeholder="User Code"/>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>First Name <span class="required">*</span></label>
+                                        <input class="form-control" type="text" id="first_name" ng-model="module.first_name" style="text-transform: capitalize;" placeholder="First Name" required />
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label>Last Name <span class="required">*</span></label>
+                                        <input class="form-control" type="text" id="last_name" ng-model="module.last_name" style="text-transform: capitalize;" placeholder="Last Name" required />
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label>Email <span class="required">*</span></label>
+                                        <input class="form-control" type="text" id="email" ng-model="module.email" ng-blur="checkEmail(module.email)" placeholder="Email" required />
+                                        <span ng-show="email_cnt === 0" class="text-success"><i class="fa fa-check"> Email is available</i></span>
+                                        <span ng-show="email_cnt > 0" class="text-danger"><i class="fa fa-close"> Email is already in used</i></span>
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label>Password <span class="required">*</span></label>
+                                        <input class="form-control" type="text" id="password" ng-model="module.password" placeholder="Password" required />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" >
+                                <div class="row">
+                                    
+                                    <div class="col-md-12">
+                                        <label>Phone <span class="required">*</span></label>
+                                        <input class="form-control" type="text" id="phone" ng-model="module.phone" placeholder="Phone" required />
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label>Address</label>
+                                        <textarea class="form-control" ng-model="module.address" placeholder="Address"></textarea>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Country</label>
+                                        <input class="form-control" type="text" value="Bangladesh" disabled="" placeholder="Country" />
+                                    </div>
+
+                                    <div class="col-md-12" ng-init="getRoleList()">
+                                        <label>User Role <span class="required">*</span></label>
+                                        <select class="chosen-select form-control" id="role_id" ng-model="module.role_id" ng-change="selectRole(module.role_id)" required>
+                                            <option value="">Choose Role</option>
+                                            <option ng-repeat="obj in roleList track by $index" ng-value="obj.role_id">
+                                                {{obj.role_name}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-12">&nbsp;</div>
+
+
+                                    <div class="col-md-12">
+                                        <div class="form-actions pull-right">
+
+                                            <button type="button" ui-sref="{{JCOMPONENT.user_list_view}}" ng-show="true" class="btn btn-sm btn-danger">
+                                                <i class="ace-icon fa fa-close"></i>Cancel
+                                            </button>
+
+                                            <button type="reset" ng-show="current_state === JCOMPONENT.user_add_view" class="btn btn-sm btn-warning">
+                                                <i class="ace-icon fa fa-recycle"></i>Reset
+                                            </button>
+
+                                            <button type="submit" class="btn btn-sm btn-primary">
+                                                <i class="ace-icon fa fa-check-circle"></i>
+                                                <span ng-if="current_state === JCOMPONENT.user_add_view" >Save</span> 
+                                                <span ng-if="current_state === JCOMPONENT.user_edit_view" >Update</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
